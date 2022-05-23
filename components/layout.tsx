@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Link from 'next/link'
+import Header from "./header"
 
 type Props = {
     children?: React.ReactNode
@@ -15,6 +15,7 @@ export default function Layout({ children, title, description }: Props) {
                 <title>{ pageTitle }</title>
                 <meta name="description" content={ description || '' } />
             </Head>
+            <Header/>
             <main>{ children }</main>
         </div>
     )
