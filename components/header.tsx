@@ -1,59 +1,67 @@
-import { AppBar, Container, Toolbar, Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Container, Toolbar, Typography } from "@mui/material";
 import React, { useState } from 'react';
+import HeaderNavListPc from "./headerNavListPc";
+import HeaderIconMenu from "./headerIconMenu";
 
 const Header:React.FC=()=>{
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const list:string[]=["home","about"]
+  const list:string[]=["ABOUT","FAN ART","HISTORY","STREAM","SHORTS","CONTACT"]
   
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>):void => {
     setAnchorElNav(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = ():void => {
     setAnchorElNav(null);
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{zindex:"tooltip"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {list.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+          <Typography
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            熱田アメノ
+          </Typography>
+          <HeaderIconMenu
+            handleOpenNavMenu={handleOpenNavMenu}
+            handleCloseNavMenu={handleCloseNavMenu}
+            list={list}
+            anchorElNav={anchorElNav}
+          />
+          <Typography
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            熱田アメノ
+          </Typography>
+          <HeaderNavListPc
+            list={list}
+            handleCloseNavMenu={handleCloseNavMenu}
+          />
         </Toolbar>
       </Container>
     </AppBar>
