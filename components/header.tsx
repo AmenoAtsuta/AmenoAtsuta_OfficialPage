@@ -16,7 +16,7 @@ const Header:React.FC=()=>{
   };
 
   return (
-    <AppBar position="static" sx={{zindex:"tooltip"}}>
+    <AppBar position="static" sx={{zIndex:"tooltip",backgroundColor:"rgba(51, 60, 94,0.7)", position:"fixed"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
