@@ -4,6 +4,9 @@ const nextConfig = {
   experimental: {
     optimizeFonts: true,
   },
+  images: {
+    domains: ["yt3.ggpht.com"],
+  },
 }
 
 module.exports = nextConfig
